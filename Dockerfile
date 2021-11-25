@@ -1,12 +1,15 @@
-FROM python:3.7
+FROM python:3.8-slim-buster
 
-RUN mkdir /application
-WORKDIR /application
+# Create a working directory.
+RUN mkdir wd
+WORKDIR wd
 
-COPY requirements.txt /
-RUN pip install -r /requirements.txt
+# Install Python dependencies.
+COPY requirements.txt .
+RUN pip3 install -r requirements.txt
 
-COPY ./ ./
-EXPOSE 8050
+# Copy the rest of the codebase into the image
+COPY . ./
 
-CMD [ "gunicorn", "--workers=1", "--threads=1", "-b 0.0.0.0:8000", "app:app"]
+# Finally, run gunicorn.
+CMD [ "gunicorn", "--workers=5", "--threads=1", "-b 0.0.0.0:8000", "app:server"]
