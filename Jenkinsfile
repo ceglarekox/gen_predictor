@@ -7,7 +7,7 @@ pipeline {
                 echo 'clean up..'
 		script{
 		   try { 
-	              sh 'sudo rm -rf "gen_predictor"'
+	              sh 'rm -rf "gen_predictor"'
 		   } catch (err) {
 			echo err.getMessage()
 		   }
