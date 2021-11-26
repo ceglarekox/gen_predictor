@@ -26,7 +26,7 @@ app.layout = html.Div([
 
 index_page = html.Div(
     [
-        html.H1(children="Predictor of renewable energy sources", style={'textAlign': 'center'}),
+        html.H1(children="Predictor of renewable energy sources _NEW", style={'textAlign': 'center'}),
         dbc.Tabs(
             [
                 dbc.Tab(label="General info", tab_id="tab-1"),
