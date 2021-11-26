@@ -2,6 +2,18 @@ pipeline {
     agent any
 
     stages {
+        stage('clean up') {
+            steps {
+                echo 'clean up..'
+		script{
+		   try { 
+	              sh 'sudo rm -rf "gen_predictor"'
+		   } catch (err) {
+			echo err.getMessage()
+		   }
+		}
+            }
+        }
         stage('clone repo') {
             steps {
                 echo 'cloning repo..'
